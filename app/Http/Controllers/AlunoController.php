@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Aluno;
+use App\Curso;
 class AlunoController extends Controller
 {
     /**
@@ -13,7 +14,9 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        //
+        $aluno = Aluno::all();
+
+        return view('aluno.index', compact('aluno'));
     }
 
     /**
@@ -23,7 +26,9 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        //
+        $curso = Curso::all();
+
+        return view('aluno.create', compact('curso'));
     }
 
     /**
@@ -34,7 +39,21 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+          'aluno_nome' => 'required',
+          'aluno_nasc' => 'required',
+          'aluno_logra' => 'required',
+          'aluno_cep' => 'required',
+          'aluno_bairro' => 'required',
+          'aluno_cidade' => 'required',
+          'aluno_estado' => 'required',
+          'aluno_num' => 'required',
+          'curso_id' => 'required'
+        ]);
+
+        $aluno = Aluno::create($validateData);
+
+        return redirect('/alunos')->with('sucess', 'Aluno cadastrado com sucesso');
     }
 
     /**
@@ -56,7 +75,11 @@ class AlunoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $aluno = Aluno::findOrFail($id);
+
+        $curso = Curso::all();
+
+        return view('aluno.edit', compact('aluno', 'curso'));
     }
 
     /**
@@ -68,7 +91,21 @@ class AlunoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validateData = $request->validate([
+          'aluno_nome' => 'required',
+          'aluno_nasc' => 'required',
+          'aluno_logra' => 'required',
+          'aluno_cep' => 'required',
+          'aluno_bairro' => 'required',
+          'aluno_cidade' => 'required',
+          'aluno_estado' => 'required',
+          'aluno_num' => 'required',
+          'curso_id' => 'required'
+        ]);
+
+        Aluno::whereId($id)->update($validateData);
+
+        return redirect('/alunos')->with('sucess', 'Aluno atualizado com sucesso');
     }
 
     /**
@@ -79,6 +116,10 @@ class AlunoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $aluno = Aluno::findOrFail($id);
+
+        $aluno->delete();
+
+        return redirect('/alunos')->with('sucess', 'Aluno deletado com sucesso');
     }
 }

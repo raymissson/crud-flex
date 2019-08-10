@@ -23,7 +23,7 @@
       <form method="post" action="{{ route('professors.store') }}">
         @csrf
           <div class="form-group">
-              <label for="name">Nome</label>
+              <label for="name">Nome Professor</label>
               <input type="text" class="form-control" name="prof_nome"/>
           </div>
           <div class="form-group">
