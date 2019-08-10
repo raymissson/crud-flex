@@ -43,5 +43,6 @@
         @endforeach
     </tbody>
   </table>
+  <a class="nav-link btn btn-success pequeno" href="\alunos\create">Novo</a>
 <div>
 @endsection

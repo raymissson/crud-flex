@@ -8,7 +8,21 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
+  <style>
+            .pequeno {
+                width: 20%;
+            }
+
+            .medio {
+                width: 50%;
+            }
+  </style>
   <div class="container">
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="\">
+        <img src="{!! asset('img/inicio.png') !!}" width="30" height="30" class="d-inline-block align-top" alt=""> Home
+      </a>
+    </nav>
     @yield('content')
   </div>
   <script src="{{ asset('js/app.js') }}" type="text/js"></script>
@@ -19,16 +33,9 @@
 
     	$("#cep").mask("99999-999",{completed:function(){
     		var cep = $(this).val().replace(/[^0-9]/, "");
-
-    		// Validação do CEP; caso o CEP não possua 8 números, então cancela
-    		// a consulta
     		if(cep.length != 8){
     			return false;
     		}
-
-    		// A url de pesquisa consiste no endereço do webservice + o cep que
-    		// o usuário informou + o tipo de retorno desejado (entre "json",
-    		// "jsonp", "xml", "piped" ou "querty")
     		var url = "http://viacep.com.br/ws/"+cep+"/json/";
 
     		$.getJSON(url, function(dadosRetorno){
