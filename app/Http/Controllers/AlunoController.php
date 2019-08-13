@@ -5,8 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Aluno;
 use App\Curso;
+use PDF;
+use Illuminate\Support\Facades\DB;
 class AlunoController extends Controller
 {
+
+  public function pdf(){
+    $aluno = Aluno::all();
+    $pdf = PDF::loadView('aluno.pdf', compact('aluno'));
+    return $pdf->download('alunos.pdf');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,6 @@ class AlunoController extends Controller
     public function index()
     {
         $aluno = Aluno::all();
-
         return view('aluno.index', compact('aluno'));
     }
 

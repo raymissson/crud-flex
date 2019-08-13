@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::resource('professors', 'ProfessorController');
 Route::resource('cursos', 'CursoController');
 Route::resource('alunos', 'AlunoController');
+
+Route::get('/pdf', 'AlunoController@pdf')->name('pdf');

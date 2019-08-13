@@ -43,6 +43,15 @@
         @endforeach
     </tbody>
   </table>
-  <a class="nav-link btn btn-success pequeno" href="\alunos\create">Novo</a>
-<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-5">
+          <a class="nav-link btn btn-success pequeno" href="\alunos\create">Novo</a>
+      </div>
+      <div class="col-7">
+        <a class="nav-link btn btn-secondary pequeno" href="{{ route('pdf') }}">Gerar Relatório</a>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
