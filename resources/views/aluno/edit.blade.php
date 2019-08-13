@@ -8,7 +8,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    Editar Curso
+    Editar Aluno
   </div>
   <div class="card-body">
     @if ($errors->any())

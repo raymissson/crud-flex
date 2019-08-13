@@ -12,6 +12,7 @@
       {{ session()->get('success') }}
     </div><br />
   @endif
+  <h3>Lista de Alunos</h3>
   <table class="table table-striped">
     <thead>
         <tr>
