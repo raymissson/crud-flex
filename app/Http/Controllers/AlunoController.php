@@ -20,8 +20,7 @@ class AlunoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $aluno = Aluno::all();
         return view('aluno.index', compact('aluno'));
     }
@@ -31,8 +30,7 @@ class AlunoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         $curso = Curso::all();
 
         return view('aluno.create', compact('curso'));
@@ -44,8 +42,7 @@ class AlunoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $validateData = $request->validate([
           'aluno_nome' => 'required',
           'aluno_nasc' => 'required',
@@ -69,8 +66,7 @@ class AlunoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         //
     }
 
@@ -80,8 +76,7 @@ class AlunoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
         $aluno = Aluno::findOrFail($id);
 
         $curso = Curso::all();
@@ -96,8 +91,7 @@ class AlunoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         $validateData = $request->validate([
           'aluno_nome' => 'required',
           'aluno_nasc' => 'required',
@@ -121,8 +115,7 @@ class AlunoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $aluno = Aluno::findOrFail($id);
 
         $aluno->delete();
